@@ -15,9 +15,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-plt.title("DDA Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
+
 # DDA Function for line generation
  
  
@@ -49,10 +47,14 @@ def DDA(x0, y0, x1, y1):
         
         x = x + xinc
         y = y + yinc
-        print(i+1,": \t","X: ",x, "\tY: ", y)
-   
-    plt.plot(x_coorinates, y_coorinates, marker="o", markersize=1, markerfacecolor="green")
+        st.header(i+1,": \t","X: ",x, "\tY: ", y)
+    fig = plt.figure(figsize=(10, 4))
+    plt.title("Midpoint Line Algorithm")
+    plt.xlabel("X-Axis")
+    plt.ylabel("Y-Axis")
+    plt.plot(xcoordinates, ycoordinates)
     plt.show()
+    st.pyplot(fig)
  
  
 
@@ -73,82 +75,4 @@ if __name__ == "__main__":
 
     # Function call
     DDA(x1, y1, x2, y2)
-
-import matplotlib.pyplot as plt
-plt.title("midPoint line Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
-def midPoint(X1,Y1,X2,Y2):
-
-  dx = X2 - X1
-  dy = Y2 - Y1
-
-
-  d = dy - (dx/2)
-  x = X1
-  y = Y1
-
-
-  #print("X: ",x, "\tY: ", y)
-  x_coorinates = []
-  y_coorinates = []
-
-  while (x < X2):
-    x=x+1
-
-    if(d < 0):
-      d = d + dy
-
-    else:
-      d = d + (dy - dx)
-      y=y+1
-    #print("X: ",x, "\tY: ", y)
-    print("X: ",x, "\tY: ", y)
-    x_coorinates.append(x)
-    y_coorinates.append(y)
-  plt.plot(x_coorinates, y_coorinates, marker="o", markersize=1, markerfacecolor="green")
-  plt.show()
-
-
-if __name__=='__main__':
-  X1 = 10
-  Y1 = 10
-  X2 = 60
-  Y2 = 60
-  midPoint(X1, Y1, X2, Y2)
-
-import matplotlib.pyplot as plt
-plt.title("Bresenham Algorithm")
-plt.xlabel("X Axis")
-plt.ylabel("Y Axis")
-
-
-def bresenham(x1, y1, x2, y2):
-
-  m_new = 2 * (y2 - y1)
-  slope_error_new = m_new - (x2 - x1)
-
-  y = y1
-  x_coorinates = []
-  y_coorinates = []
-  for x in range(x1, x2+1):
-
-    print("X: ",x, "\tY: ", y)
-    x_coorinates.append(x)
-    y_coorinates.append(y)
-
-    slope_error_new = slope_error_new + m_new
-
-    if (slope_error_new >= 0):
-      y = y+1
-      slope_error_new = slope_error_new - 2 * (x2 - x1)
-  plt.plot(x_coorinates, y_coorinates, marker="o", markersize=1, markerfacecolor="green")
-  plt.show()
-
-if __name__ == '__main__':
-	x1 = 10
-	y1 = 10
-	x2 = 60
-	y2 = 60
-	bresenham(x1, y1, x2, y2)
+ 
